@@ -1,0 +1,10 @@
+@import "basic";
+@import "test";
+
+.something {
+  color: $basic-color;
+}
+
+.external-thing {
+  color: $test-color;
+}

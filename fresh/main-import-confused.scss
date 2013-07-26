@@ -1,0 +1,18 @@
+@import "basic";
+
+// 'extra' and 'extra-load' have the exact same contents.
+// try uncommenting each and running sassc.. 
+// @import "extra"; // broken: libsass is confusing the directory "extra" with "_extra.scss"
+@import "extra-load"; // this works
+
+.something {
+  color: $basic-color;
+}
+
+.another-thing {
+  color: $extra-a-color;
+}
+
+.last-thing {
+  color: $extra-b-color;
+}
