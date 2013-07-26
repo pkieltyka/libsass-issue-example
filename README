@@ -1,0 +1,31 @@
+
+
+## @import bug - CASE 1: import "extra" uncommented / "extra-load" commented
+
+[peter@pak ~/Development/other/sassc/bin]$ ./sassc fresh/main-import-confused.scss
+/Users/peter/Development/other/sassc/bin/fresh/main-import-confused.scss:13: error: unbound variable $extra-a-color
+
+## @import bug - CASE 2: import "extra" commented / "extra-load" uncommented
+
+[peter@pak ~/Development/other/sassc/bin]$ ./sassc fresh/main-import-confused.scss
+.something {
+  color: "white"; }
+
+.another-thing {
+  color: "red"; }
+
+.last-thing {
+  color: "black"; }
+
+
+## Include path bug
+
+[peter@pak ~/Development/other/sassc/bin]$ ls
+external/ fresh/    sassc*
+
+[peter@pak ~/Development/other/sassc/bin]$ ./sassc -I "/Users/peter/Development/other/sassc/bin/external" fresh/main-include-path-broken.scss
+/Users/peter/Development/other/sassc/bin/fresh/main-include-path-broken.scss:2: error: file to import not found or unreadable: "test"
+
+.. I've tried every which way to pass the path to -I without any luck. This first came up when I was getting strange results with node-sass and noticed very simple files weren't being imported from the include path.
+
+
